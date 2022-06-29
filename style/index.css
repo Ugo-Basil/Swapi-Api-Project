@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: url(https://images.unsplash.com/photo-1472457974886-0ebcd59440cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80) no-repeat center/cover;
+    height: 100vh;
+    background-attachment: fixed;
+    color: #000;
+}
+
+.heading, .btn-container{
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn-btn{
+    padding: 1rem 3rem;
+    cursor: pointer;
+    color: #fff;
+    font-size: 3rem;
+    background: #000;
+    border: none;
+    border-radius: 10px;
+  
+}
+
+.btn-btn:hover{
+    background: #fff;
+    color: #000;
+
+}
+
+.btn-btn:active{
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+#cards{
+    display: none;
+    justify-content: space-around;
+    flex-flow: wrap;
+    flex-direction: row;
+    gap: 2rem;
+    margin: 1rem;
+    
+}
+
+.card{
+    width: 25%;
+    box-shadow: 0 0 4px 2px  #000;
+    border-radius: 10px;
+    text-align: center;
+    padding: 1.5em;
+    margin-bottom: 2em;
+    background: rgba(255, 255, 255, .7);
+}
+
+img{
+    width: 70%;
+    border-radius: 5px;
+    margin-top: .5rem;
+
+}
+
+.title{
+    font-size: 1.3rem;
+}
+
+.gender, .height{
+    font-weight: bold;
+    text-transform: capitalize;
+    margin: 1em;
+    font-size: 1.2rem;
+}
+
+
+@media screen and (max-width:1200px){
+    .card{
+      width: 50%;
+      margin: 1rem;
+    }
+  
+    @media screen and (max-width:768px) {
+      .card{
+        width: 100%;
+        margin: 0 auto;
+      }
+      #cards{
+        display: none;
+        justify-content: space-around;
+        flex-flow: wrap;
+        flex-direction: column;
+        gap: 2rem;
+        margin: 1rem;
+    }
+    
+  }
+}
