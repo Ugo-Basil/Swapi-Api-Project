@@ -2,24 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swapi project</title>
-    <link rel="stylesheet" href="./style/index.css">
+    <title>Star Wars API</title>
+   <link rel="stylesheet" href="./style/index.css">
+
 </head>
 <body>
-    <h1 class="heading">STAR WARS API</h1>
-    <div class="btn-container">
-        <button id="open" class="btn-btn">Show</button>
-        <button id="close" class="btn-btn">Close</button>
-    </div>
-    <div id="cards">
-        <div class="card"> 
-            <h1 class="title"></h1>
-            <img src="" alt="img" class="images">
-            <p class="gender"></p>
-            <p class="height"></p>
-        </div>
-    <script src="./script/index.js"></script>
+   <section class="header">
+    <header>
+            <h1>Star Wars API</h1>
+    </header>
+    <main id="main">     
+    </main> 
+    <div>
+        <div class="modal hidden">
+            <button class="close-modal">&times;</button>
+            <h1 id="name"></h1>
+            <h2 id="gender"></h2>
+            <h2 id="height"></h2>
+          </div>
+          <div class="overlay hidden"></div>
+     </div> 
+   </section>
+<script src="./script/index.js"></script>
 </body>
 </html>

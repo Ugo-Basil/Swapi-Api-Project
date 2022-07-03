@@ -1,33 +1,74 @@
-const openBtn = document.getElementById('open');
-const closeBtn = document.getElementById('close');
-const cards = document.querySelector('#cards');
-//Listen for click
-openBtn.addEventListener('click', openCards);
-closeBtn.addEventListener('click', closeCards);
+/* Modal Display of stars info*/
+const modal = document.querySelector(".modal");
+const overlay = document.querySelector(".overlay");
+const btnCloseModal = document.querySelector(".close-modal");
+const btnOpenModal = document.querySelectorAll(".show-modal");
+let modalName = document.querySelector("#name");
+let modalgender = document.querySelector("#gender");
+let modalheight = document.querySelector("#height");
 
-function openCards() {
-    cards.style.display = 'flex' 
+const closeModal = function () {
+  modal.classList.add("hidden");
+  overlay.classList.add("hidden");
+};
+
+btnCloseModal.addEventListener("click", closeModal);
+overlay.addEventListener("click", closeModal);
+
+
+// API CALL
+const images = [
+  "one.jpg",
+  "two.jpg",
+  "three.jpg",
+  "four.jpg",
+  "five.jpg",
+  "six.jpg",
+  "seven.jpg",
+  "eight.jpg",
+  "nine.jpg",
+  "ten.jpg",
+];
+
+const BASE_URL = "https://swapi.dev/api/people";
+const main = document.getElementById("main");
+
+function getPeople(url) {
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      showPeople(data.results);
+    });
 }
+getPeople(BASE_URL);
 
-function closeCards() {
-    cards.style.display = 'none'; 
-} 
+function showPeople(data) {
+  main.innerHTML = "";
+  data.forEach((character, index) => {
+    const { name, gender, height } = character;
+    const charEl = document.createElement("div");
+    charEl.classList.add("card");
+    let showModal = document.createElement("div");
+    showModal.classList.add("show-modal");
+    charEl.appendChild(showModal);
+    showModal.innerHTML = `
+    <div>
+    <img src="./series/${images[index]}" alt="image">
+    <div class="movie-info">
+    <h2>NAME : ${name}</h2>
 
-async function asyncFetch() {
-    const res = await fetch('https://swapi.dev/api/people/');
-    const data = await res.json();
-    let output = '';
-    data.results.map((value) => {
-        output += `<div class="card"> 
-                 <h1 class="title">${value.name}</h1>
-                 <img src="https://images.pexels.com/photos/9482193/pexels-photo-9482193.jpeg?auto=compress&cs=tinysrgb&w=640&h=750&dpr=1" alt="img" class="images">
-                 <p class="gender">Gender: ${value.gender}</p>
-                 <p class="height">Height: ${value.height}</p>
-             </div>`
-    })
-    document.getElementById('cards').innerHTML = output
+    </div>
 
+    `;
+    const openModal = function () {
+      modalName.textContent = `Name: ${name}`;
+      modalgender.textContent = `Gender: ${gender}`;
+      modalheight.textContent = `Height: ${height}`;
+      modal.classList.remove("hidden");
+      overlay.classList.remove("hidden");
+    };
+    showModal.addEventListener("click", openModal);
+
+    main.appendChild(charEl);
+  });
 }
-asyncFetch()
-
-
